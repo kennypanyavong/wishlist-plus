@@ -1,0 +1,37 @@
+import { Outlet, Route, Routes } from "react-router-dom"
+import { Wishlist } from "../wishlists/Wishlist.jsx"
+import { ViewWishlist } from "../wishlists/ViewWishlist.jsx"
+import { ViewGame } from "../games/ViewGame.jsx"
+
+
+export const ApplicationViews = () => {
+
+
+    return <>
+        <Routes>
+            <Route path="/" element={
+                <>
+                    <>NavBar</> {/*just a fragment*/}
+                    <Outlet/>
+                </>
+            }/>
+                <Route index element={<>Welcome </>} /> {/* just a fragment */}
+                <Route path="create">
+                    <Route index element={<>CreateWishlist</>} /> {/* just a fragment */}
+                    <Route path="new_wishlist" element={<>NewWishlistForm</>} /> {/* just a fragment */}
+                </Route>
+                <Route path="wishlists">
+                    <Route index element={<Wishlist />} />
+                    <Route path=":wishlistId">
+                        <Route index element={<ViewWishlist />} />
+                        <Route path="game/:gameId" element={<ViewGame />} />
+                        <Route path="game/:gameId/edit" element={<>EditGameForm</>} /> {/* just a fragment */}
+                    </Route>
+                </Route>
+                <Route path="profile">
+                    <Route index element={<>UserProfile </>} /> {/* just a fragment */}
+                    <Route path=":userId" element={<>EditProfileForm</>} /> {/* just a fragment */}
+                </Route>
+        </Routes>
+    </>
+}
