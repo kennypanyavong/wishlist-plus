@@ -2,6 +2,8 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { Wishlist } from "../wishlists/Wishlist.jsx"
 import { ViewWishlist } from "../wishlists/ViewWishlist.jsx"
 import { ViewGame } from "../games/ViewGame.jsx"
+import { Welcome } from "../welcome/Welcome.jsx"
+import { UserProfile } from "../users/UserProfile.jsx"
 
 
 export const ApplicationViews = () => {
@@ -15,7 +17,7 @@ export const ApplicationViews = () => {
                     <Outlet/>
                 </>
             }/>
-                <Route index element={<>Welcome </>} /> {/* just a fragment */}
+                <Route index element={<Welcome />} />
                 <Route path="create">
                     <Route index element={<>CreateWishlist</>} /> {/* just a fragment */}
                     <Route path="new_wishlist" element={<>NewWishlistForm</>} /> {/* just a fragment */}
@@ -29,8 +31,8 @@ export const ApplicationViews = () => {
                     </Route>
                 </Route>
                 <Route path="profile">
-                    <Route index element={<>UserProfile </>} /> {/* just a fragment */}
-                    <Route path=":userId" element={<>EditProfileForm</>} /> {/* just a fragment */}
+                    <Route index element={<UserProfile />} /> 
+                    <Route path="profile/:userId" element={<>EditProfileForm</>} /> {/* just a fragment */}
                 </Route>
         </Routes>
     </>

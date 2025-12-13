@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react"
+import { getUserById } from "../../services/userService.jsx"
+import { Link, useParams } from "react-router-dom"
+import { getWishlistByUserId } from "../../services/wishlistService.jsx"
+
+export const UserProfile = () => {
+    const [userProfile, setUserProfile] = useState({})
+    const [wishlists, setWishlists] = useState([])
+    const {userId} = useParams()
+
+    useEffect(() => {
+        getUserById(userId).then(setUserProfile)
+        getWishlistByUserId(userId).then(setWishlists)
+    }, [])
+
+    return (
+        <div>
+            <article>
+                <h1>{userProfile.username}</h1>
+                <h2>{wishlists.length} Wishlists</h2>
+            </article>
+            <Link to={`/profile/${userProfile.id}/edit`}>
+                <button>Edit</button>
+            </Link>
+        </div>
+    )
+}

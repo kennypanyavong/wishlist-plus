@@ -6,3 +6,7 @@ export const getAllWishlists = () => {
 export const getWishlistGamesById = (wishlistId) => {
     return fetch(`http://localhost:8088/wishlistGames?wishlistId=${wishlistId}&_expand=game`).then((res) => res.json())
 }
+
+export const getWishlistByUserId = (userId) => {
+    return fetch(`http://localhost:8088/wishlists?userId=${userId}`).then((res) => res.json())
+}
