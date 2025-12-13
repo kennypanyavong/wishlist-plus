@@ -1,29 +1,25 @@
 import { useEffect, useState } from "react"
-import { getGameInfo } from "../../services/gameService.jsx"
+import { getGameInfoById } from "../../services/gameService.jsx"
+import { useParams } from "react-router-dom"
 
 // need to get game by id
 export const ViewGame = () => {
-    const [gameInfo, setGameInfo] = useState([])
+    const [gameInfo, setGameInfo] = useState({})
+    const {gameId} = useParams()
 
     useEffect(() => {
-        getGameInfo().then((gameInfoArray) => {
-            setGameInfo(gameInfoArray)
-        })
-    }, [])
+        getGameInfoById(gameId).then(setGameInfo)
+    }, [gameId])
 
     return (
         <div>
-            <article>
-                {gameInfo.map((info) => {
-                    return (
-                        <div key={info.id}>
-                            <img src={info.imageUrl} alt={info.title} />
-                            <header>{info.title}</header>
-                            <p>${info.price}</p>
-                            <btn>Edit</btn>
-                        </div>
-                    )
-                })}
+            <article>            
+                <div key={gameInfo.id}>
+                    <img src={gameInfo.imageUrl} alt={gameInfo.title} />
+                    <header>{gameInfo.title}</header>
+                    <p>${gameInfo.price}</p>
+                    <button>Edit</button>
+                </div>              
             </article>
         </div>
     )

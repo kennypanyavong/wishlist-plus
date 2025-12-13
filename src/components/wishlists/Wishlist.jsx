@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAllWishlists } from "../../services/wishlistService.jsx"
+import { Link } from "react-router-dom"
 
 // define and export Wishlist function
 export const Wishlist = () => {
@@ -16,7 +17,9 @@ export const Wishlist = () => {
             <article>
                 {wishlists.map((wishlist) => {
                     return (
-                        <header key={wishlist.id}>{wishlist.name}</header>
+                        <Link key={wishlist.id} to={`/wishlists/${wishlist.id}`}>
+                            <header>{wishlist.name}</header>
+                        </Link>
                     )
                 })}
             </article>

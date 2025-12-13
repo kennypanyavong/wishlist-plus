@@ -1,17 +1,21 @@
-import { Login } from "./components/auth/Login.jsx"
-import { Register } from "./components/auth/Register.jsx"
-import { ViewGame } from "./components/games/ViewGame.jsx"
-import { ViewWishlist } from "./components/wishlists/ViewWishlist.jsx"
-import { Wishlist } from "./components/wishlists/Wishlist.jsx"
+import { Route, Routes } from "react-router-dom"
+// import { Login } from "./components/auth/Login.jsx"
+// import { Register } from "./components/auth/Register.jsx"
+import { ApplicationViews } from "./components/views/ApplicationViews.jsx"
+// import { Authorized } from "./components/views/Authorized.jsx"
 
 export const App = () => {
   return (
-    <>
-      <Login />
-      <Register />
-      <Wishlist />
-      <ViewWishlist />
-      <ViewGame />
-    </>
+    <Routes>
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} /> */}
+
+      <Route path="*" element={
+        // <Authorized>
+          <ApplicationViews />
+        // </Authorized>
+        }
+      />
+    </Routes>
   )
 }
