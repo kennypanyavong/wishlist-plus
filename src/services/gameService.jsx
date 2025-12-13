@@ -1,3 +1,3 @@
-export const getGameInfo = () => {
-    return fetch("http://localhost:8088/games?_expand=user").then((res) => res.json())
+export const getGameInfoById = (gameId) => {
+    return fetch(`http://localhost:8088/games/${gameId}`).then((res) => res.json())
 }

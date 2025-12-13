@@ -3,6 +3,6 @@ export const getAllWishlists = () => {
 }
 
 // fetch request hard-coded to return a list, need to update with useParams()
-export const getWishlistGames = () => {
-    return fetch("http://localhost:8088/wishlistGames?wishlistId=1&_expand=game").then((res) => res.json())
+export const getWishlistGamesById = (wishlistId) => {
+    return fetch(`http://localhost:8088/wishlistGames?wishlistId=${wishlistId}&_expand=game`).then((res) => res.json())
 }
