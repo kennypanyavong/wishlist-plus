@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom"
 export const NavBar = () => {
     const navigate = useNavigate()
 
+    const loggedInUser = JSON.parse(localStorage.getItem("wishlist_user"))
+    const userId = loggedInUser?.id
+
     return <ul className="navbar">
         <li className="navbar-item">
             <Link to="/create">Create New Wishlist</Link>
@@ -11,7 +14,7 @@ export const NavBar = () => {
             <Link to="/wishlists">View All Wishlists</Link>
         </li>
         <li className="navbar-item">
-            <Link to="/profile">Profile</Link>
+            <Link to={`/profile/${userId}`}>Profile</Link>
         </li>
         <li className="navbar-item navbar-logout" >
             <Link

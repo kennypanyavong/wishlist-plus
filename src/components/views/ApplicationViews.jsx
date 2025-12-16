@@ -5,6 +5,7 @@ import { ViewGame } from "../games/ViewGame.jsx"
 import { Welcome } from "../welcome/Welcome.jsx"
 import { UserProfile } from "../users/UserProfile.jsx"
 import { NavBar } from "../nav/NavBar.jsx"
+import { EditProfile } from "../forms/EditProfile.jsx"
 
 
 export const ApplicationViews = () => {
@@ -37,11 +38,9 @@ export const ApplicationViews = () => {
                     </Route>
                 </Route>
 
-                <Route path="profile">
-                    <Route index element={<UserProfile />} /> 
-                    <Route path="profile/:userId" element={<>EditProfileForm</>} /> {/* just a fragment */}
+                <Route path="profile/:userId" element={<UserProfile />} />
+                    <Route path="profile/:userId/edit" element={<EditProfile/>} />
                 </Route>
-            </Route>
         </Routes>
     )
 }
