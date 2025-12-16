@@ -6,7 +6,7 @@ import { getWishlistsByUserId } from "../../services/wishlistService.jsx"
 export const UserProfile = () => {
     const [userProfile, setUserProfile] = useState({})
     const [wishlists, setWishlists] = useState([])
-    const {userId} = useParams()
+    const { userId } = useParams()
 
     useEffect(() => {
         getUserById(userId).then(setUserProfile)
