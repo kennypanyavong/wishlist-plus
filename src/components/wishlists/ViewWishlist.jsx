@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react"
-import { getWishlistGamesById } from "../../services/wishlistService.jsx"
+import { getWishlistById, getWishlistGamesById } from "../../services/wishlistService.jsx"
 import { Link, useParams } from "react-router-dom"
 
 
 export const ViewWishlist = () => {
     const [wishlistGames, setWishlistGames] = useState([])
+    const [wishlist, setWishlist] = useState({})
     const {wishlistId} = useParams()
 
     useEffect(() => {
         getWishlistGamesById(wishlistId).then((wishlistGamesArray) => {
             setWishlistGames(wishlistGamesArray)
+            getWishlistById(wishlistId).then(setWishlist)
         })
     }, [wishlistId])
      
     return (
         <div>
+            <h1>{wishlist.name}</h1>
             <article>
                 {wishlistGames.map((wishlistGame) => {
                     return (
