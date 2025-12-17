@@ -6,6 +6,7 @@ import { Welcome } from "../welcome/Welcome.jsx"
 import { UserProfile } from "../users/UserProfile.jsx"
 import { NavBar } from "../nav/NavBar.jsx"
 import { EditProfile } from "../forms/EditProfile.jsx"
+import { CreateWishlist } from "../forms/CreateWishlist.jsx"
 
 
 export const ApplicationViews = () => {
@@ -25,8 +26,8 @@ export const ApplicationViews = () => {
 
                 <Route index element={<Welcome />} />
                 
-                <Route path="create">
-                    <Route index element={<>CreateWishlist</>} /> {/* just a fragment */}
+                <Route path="create_wishlist">
+                    <Route index element={<CreateWishlist/>} />
                     <Route path="new_wishlist" element={<>NewWishlistForm</>} /> {/* just a fragment */}
                 </Route>
 

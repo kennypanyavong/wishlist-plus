@@ -1,5 +1,5 @@
-export const getAllWishlists = () => {
-    return fetch("http://localhost:8088/wishlists").then((res) => res.json())
+export const getWishlistById = (wishlistId) => {
+    return fetch(`http://localhost:8088/wishlists/${wishlistId}`).then((res) => res.json())
 }
 
 // fetch request hard-coded to return a list, need to update with useParams()
@@ -9,4 +9,14 @@ export const getWishlistGamesById = (wishlistId) => {
 
 export const getWishlistsByUserId = (userId) => {
     return fetch(`http://localhost:8088/wishlists?userId=${userId}`).then((res) => res.json())
+}
+
+export const createWishlist = (newWishlist) => {
+    return fetch("http://localhost:8088/wishlists", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWishlist)
+    }).then((res) => res.json())
 }
