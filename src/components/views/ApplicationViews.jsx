@@ -24,6 +24,7 @@ export const ApplicationViews = () => {
             >
 
                 <Route index element={<Welcome />} />
+                
                 <Route path="create">
                     <Route index element={<>CreateWishlist</>} /> {/* just a fragment */}
                     <Route path="new_wishlist" element={<>NewWishlistForm</>} /> {/* just a fragment */}
@@ -39,8 +40,9 @@ export const ApplicationViews = () => {
                 </Route>
 
                 <Route path="profile/:userId" element={<UserProfile />} />
-                    <Route path="profile/:userId/edit" element={<EditProfile/>} />
-                </Route>
+                <Route path="profile/:userId/edit" element={<EditProfile/>} />
+
+            </Route>
         </Routes>
     )
 }
