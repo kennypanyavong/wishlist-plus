@@ -17,7 +17,7 @@ export const ViewGame = () => {
                 <div key={gameInfo.id}>
                     <img src={gameInfo.imageUrl} alt={gameInfo.title} />
                     <header>{gameInfo.title}</header>
-                    <p>${gameInfo.price}</p>
+                    <p>${gameInfo.price.toFixed(2)}</p>
                     <button>Edit</button>
                 </div>              
             </article>

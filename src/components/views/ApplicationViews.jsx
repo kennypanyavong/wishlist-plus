@@ -8,6 +8,7 @@ import { NavBar } from "../nav/NavBar.jsx"
 import { EditProfile } from "../forms/EditProfile.jsx"
 import { CreateWishlist } from "../forms/CreateWishlist.jsx"
 import { AddGame } from "../forms/AddGame.jsx"
+import { EditWishlist } from "../forms/EditWishlist.jsx"
 
 
 export const ApplicationViews = () => {
@@ -29,16 +30,21 @@ export const ApplicationViews = () => {
                 
                 <Route path="create_wishlist">
                     <Route index element={<CreateWishlist/>} />
-                    <Route path="new_wishlist" element={<>NewWishlistForm</>} /> {/* just a fragment */}
                 </Route>
 
                 <Route path="wishlists">
                     <Route index element={<Wishlist />} />
+
                     <Route path=":wishlistId">
                         <Route index element={<ViewWishlist />} />
-                        <Route path="game/:gameId" element={<ViewGame />} />
+                        <Route path="edit" element={<EditWishlist />} />
+
+                        <Route path="game/:gameId">
+                            <Route index element={<ViewGame />} />
+                            <Route path="edit" element={<>EditGameForm</>} /> {/* just a fragment */}
+                        </Route>
+
                         <Route path="add_game" element={<AddGame />} />
-                        <Route path="game/:gameId/edit" element={<>EditGameForm</>} /> {/* just a fragment */}
                     </Route>
                 </Route>
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { getWishlistById, getWishlistGamesById } from "../../services/wishlistService.jsx"
-import { Link, useParams } from "react-router-dom"
-import { AddGame } from "../forms/AddGame.jsx"
+import { Link, Outlet, useParams } from "react-router-dom"
 
 
 export const ViewWishlist = () => {
@@ -25,7 +24,7 @@ export const ViewWishlist = () => {
                         <div key={wishlistGame.id}>
                             <Link to={`/wishlists/${wishlistId}/game/${wishlistGame.game.id}`}>
                             <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
-                            <p>${wishlistGame.game.price}</p>                         
+                            <p>${wishlistGame.game.price.toFixed(2)}</p>                         
                             </Link>
                         </div>
                     )
@@ -39,8 +38,13 @@ export const ViewWishlist = () => {
                 </Link>
             </div>
             <div>
-                <button>Edit List</button>
+                <Link to={`edit`}>
+                    <button>
+                        Edit List
+                    </button>
+                </Link>
             </div>   
+            {<Outlet />}
         </div>
     )
 }

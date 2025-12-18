@@ -20,3 +20,20 @@ export const createWishlist = (newWishlist) => {
         body: JSON.stringify(newWishlist)
     }).then((res) => res.json())
 }
+
+export const updateWishlist = (wishlist) => {
+    return fetch(`http://localhost:8088/wishlists/${wishlist.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(wishlist)
+    })
+}
+
+export const deleteWishlist = (wishlistId) => {
+    return fetch(`http://localhost:8088/wishlists/${wishlistId}`, {
+        method: "DELETE"
+        }
+    )
+}
