@@ -9,6 +9,7 @@ import { EditProfile } from "../forms/EditProfile.jsx"
 import { CreateWishlist } from "../forms/CreateWishlist.jsx"
 import { AddGame } from "../forms/AddGame.jsx"
 import { EditWishlist } from "../forms/EditWishlist.jsx"
+import { EditGame } from "../forms/EditGame.jsx"
 
 
 export const ApplicationViews = () => {
@@ -41,7 +42,7 @@ export const ApplicationViews = () => {
 
                         <Route path="game/:gameId">
                             <Route index element={<ViewGame />} />
-                            <Route path="edit" element={<>EditGameForm</>} /> {/* just a fragment */}
+                            <Route path="edit" element={<EditGame/>} />
                         </Route>
 
                         <Route path="add_game" element={<AddGame />} />

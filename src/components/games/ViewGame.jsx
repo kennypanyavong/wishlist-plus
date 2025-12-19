@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getGameInfoById } from "../../services/gameService.jsx"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 // need to get game by id
 export const ViewGame = () => {
@@ -17,8 +17,12 @@ export const ViewGame = () => {
                 <div key={gameInfo.id}>
                     <img src={gameInfo.imageUrl} alt={gameInfo.title} />
                     <header>{gameInfo.title}</header>
-                    <p>${gameInfo.price.toFixed(2)}</p>
-                    <button>Edit</button>
+                    <p>${gameInfo.price ? gameInfo.price.toFixed(2) : "0.00"}</p>
+                    <button>
+                        <Link to="edit">
+                            Edit
+                        </Link>
+                    </button>
                 </div>              
             </article>
         </div>
