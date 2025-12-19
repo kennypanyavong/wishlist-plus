@@ -42,7 +42,8 @@ export const EditGame = () => {
 
         const updatedGame = {
             ...game,
-            price: Number(game.price)
+            price: Number(game.price),
+            id: game.id
         }
 
         updateGame(updatedGame).then(() => {
@@ -50,8 +51,8 @@ export const EditGame = () => {
 
             const newWishlistId = Number(selectedWishlist)
 
-            if (wishlistGame.wishlistId === newWishlistId)
-                
+            if (wishlistGame.wishlistId !== newWishlistId)
+
                 return updateWishlistGame({
                     ...wishlistGame,
                      wishlistId: newWishlistId
