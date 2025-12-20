@@ -1,0 +1,42 @@
+.navbar {
+  display: flex;
+  background-color: #1b2838;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  margin: 0;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #3a4756;
+}
+
+
+.navbar-item {
+  position: relative;
+}
+
+
+.navbar-item a {
+  color: #c7d5e0;
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  display: inline-block;
+  border-radius: 3px;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
+
+.navbar-item a:hover {
+  background-color: #66c0f4;
+  color: #0b1a28;
+}
+
+
+.navbar-logout {
+  margin-left: auto;
+}
+
+.navbar-logout a {
+  font-weight: bold;
+}

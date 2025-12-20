@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getWishlistsByUserId } from "../../services/wishlistService.jsx"
 import { Link } from "react-router-dom"
 import { getLoggedInUser } from "../auth/Auth.jsx"
+import './Wishlist.css'
 
 // define and export Wishlist function
 export const Wishlist = () => {
@@ -13,16 +14,24 @@ export const Wishlist = () => {
     }, [loggedInUser.id])
 // map over the wishlists array and create an element for each wishlist
     return (
-        <div>
-            <article>
+        <div className="wishlist-grid-container">
+            
                 {wishlists.map((wishlist) => {
                     return (
-                        <Link key={wishlist.id} to={`/wishlists/${wishlist.id}`}>
+                        <Link 
+                        key={wishlist.id} 
+                        to={`/wishlists/${wishlist.id}`} 
+                        className="wishlist-card">
+                        {/* <img
+                            src={wishlist.imageUrl}
+                            alt={wishlist.name}
+                            className="wishlist-card-img"
+                        /> */}
                             <header>{wishlist.name}</header>
                         </Link>
                     )
                 })}
-            </article>
+            
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { addGameToWishlist, createGame } from "../../services/gameService"
 import { getLoggedInUser } from "../auth/Auth"
 import { getWishlistsByUserId } from "../../services/wishlistService"
+import './AddGame.css'
 
 export const AddGame = () => {
     const [gameTitle, setGameTitle] = useState("")
@@ -50,9 +51,9 @@ export const AddGame = () => {
     }
 
     return (
-        <div>
+        <div className="add-game-container">
             <div>
-                <form>
+                <form className="add-game-form">
                     <h2>Add a Game</h2>
                         <input
                             type="text"

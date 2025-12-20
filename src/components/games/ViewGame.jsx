@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getGameInfoById } from "../../services/gameService.jsx"
 import { Link, useParams } from "react-router-dom"
+import './ViewGame.css'
 
 // need to get game by id
 export const ViewGame = () => {
@@ -12,8 +13,8 @@ export const ViewGame = () => {
     }, [gameId])
 
     return (
-        <div>
-            <article>            
+        <div className="view-game-container">
+            <article className="game-card">            
                 <div key={gameInfo.id}>
                     <img src={gameInfo.imageUrl} alt={gameInfo.title} />
                     <header>{gameInfo.title}</header>

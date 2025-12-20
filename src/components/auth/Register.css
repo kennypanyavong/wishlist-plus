@@ -1,0 +1,102 @@
+/* Container for the register page */
+.container-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: #0b1a28; /* Steam dark background */
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  color: #c7d5e0;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Form container with Steam card style */
+.form-login {
+  background-color: #1b2838; /* Card background */
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  border: 1px solid #3a4756;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+/* Form headings */
+.form-login h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #66c0f4; /* Steam accent color */
+}
+
+.form-login h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #c7d5e0;
+}
+
+/* Fieldset styling */
+.form-login fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Input group styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  border: 1px solid #3a4756;
+  background-color: #0b1a28; /* match background */
+  color: #c7d5e0;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control::placeholder {
+  color: #8f98a0;
+}
+
+/* Input focus effect */
+.form-control:focus {
+  outline: none;
+  border-color: #66c0f4;
+  box-shadow: 0 0 5px rgba(102, 192, 244, 0.5);
+}
+
+/* Button styling */
+.login-btn {
+  width: 100%;
+  background-color: #66c0f4; /* Steam accent */
+  color: #0b1a28;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.login-btn:hover {
+  background-color: #53a5d8;
+  transform: translateY(-2px);
+}
+
+/* Bottom link */
+.container-register div a {
+  color: #66c0f4;
+  text-decoration: none;
+  margin-left: 0.3rem;
+  transition: color 0.2s;
+}
+
+.container-register div a:hover {
+  color: #53a5d8;
+}

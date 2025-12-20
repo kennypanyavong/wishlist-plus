@@ -1,0 +1,79 @@
+/* Container for the create wishlist page */
+.create-wishlist-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 70vh;
+  background-color: #0b1a28; /* Steam dark background */
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  color: #c7d5e0;
+  padding: 2rem;
+}
+
+/* Form card */
+.create-wishlist-form {
+  background-color: #1b2838; /* Card background */
+  padding: 2rem 2.5rem;
+  border-radius: 5px;
+  border: 1px solid #3a4756;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Heading */
+.create-wishlist-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #66c0f4; /* Steam accent color */
+}
+
+/* Input field */
+.create-wishlist-form input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  border: 1px solid #3a4756;
+  background-color: #0b1a28;
+  color: #c7d5e0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.create-wishlist-form input[type="text"]::placeholder {
+  color: #8f98a0;
+}
+
+.create-wishlist-form input[type="text"]:focus {
+  outline: none;
+  border-color: #66c0f4;
+  box-shadow: 0 0 5px rgba(102,192,244,0.5);
+}
+
+/* Buttons */
+.create-wishlist-form button {
+  background-color: #66c0f4;
+  color: #0b1a28;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.create-wishlist-form button:hover {
+  background-color: #53a5d8;
+  transform: translateY(-2px);
+}
+
+/* Disabled button state */
+.create-wishlist-form button:disabled {
+  background-color: #3a4756;
+  cursor: not-allowed;
+  color: #8f98a0;
+}

@@ -3,6 +3,7 @@ import { Login } from "./components/auth/Login.jsx"
 import { Register } from "./components/auth/Register.jsx"
 import { ApplicationViews } from "./components/views/ApplicationViews.jsx"
 import { Authorized } from "./components/views/Authorized.jsx"
+import './App.css'
 
 export const App = () => {
   return (

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { deleteWishlist, getWishlistById, getWishlistGamesById, updateWishlist } from "../../services/wishlistService"
 import { deleteGameFromWishlist } from "../../services/gameService"
+import './EditWishlist.css'
 
 export const EditWishlist = () => {
     const [wishlist, setWishlist] = useState({})
@@ -52,7 +53,7 @@ export const EditWishlist = () => {
     }
        
     return (
-        <div>
+        <div className="edit-wishlist-container">
             <h2>Edit Wishlist</h2>
             <input 
                 value={wishlist.name}
@@ -60,31 +61,29 @@ export const EditWishlist = () => {
                     setWishlist({ ...wishlist, name: e.target.value})
                 }
             />
-            <div>
+            <div className="wishlist-games-grid">
                 {wishlistGames.map(wishlistGame => (
-                    <div key={wishlistGame.id}>
+                    <div key={wishlistGame.id} className="wishlist-game-card">
                         <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
                         <p>{wishlistGame.game.title}</p>
                         <p>${wishlistGame.game.price.toFixed(2)}</p>
-                        <button onClick={() => handleDeleteGame(wishlistGame.id)}>
+                        <button onClick={() => handleDeleteGame(wishlistGame.id)} className="danger">
                             Remove Game
                         </button>
                         
                     </div>
                 ))}
             </div>
-            <div>
+            <div className="wishlist-buttons">
                 <button onClick={() => navigate(`/wishlists/${wishlistId}/add_game`)}>
                     Add Game
                 </button>
-            </div>
-            <div>
+            
                 <button onClick={handleSave}>
                     Save Changes
                 </button>
-            </div>
-            <div>
-                <button onClick={handleDeleteWishlist}>
+            
+                <button onClick={handleDeleteWishlist} className="danger">
                     Delete List
                 </button>
             </div>

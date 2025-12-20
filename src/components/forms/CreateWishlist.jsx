@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getLoggedInUser } from "../auth/Auth"
 import { createWishlist } from "../../services/wishlistService"
+import './CreateWishlist.css'
 
 export const CreateWishlist = () => {
     const [wishlistName, setWishlistName] = useState("")
@@ -28,9 +29,9 @@ export const CreateWishlist = () => {
     }
  
     return (
-        <div>
+        <div className="create-wishlist-container">
+            <form className="create-wishlist-form">
             <h2>Create Wishlist</h2>
-            <form>
                 <input
                     type ="text"
                     value = {wishlistName} 

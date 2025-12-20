@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getGameInfoById, updateGame } from "../../services/gameService"
 import { getWishlistGameByGameId, getWishlistsByUserId, updateWishlistGame } from "../../services/wishlistService"
 import { getLoggedInUser } from "../auth/Auth"
+import './EditGame.css'
 
 export const EditGame = () => {
     const [game, setGame] = useState({
@@ -63,8 +64,8 @@ export const EditGame = () => {
 }
 
     return(
-        <div>
-            <form>
+        <div className="edit-game-container">
+            <form className="edit-game-form">
                 <h2>Edit Game</h2>
 
                 <input 
@@ -96,7 +97,7 @@ export const EditGame = () => {
                     </option>
                     ))}
                 </select>
-
+            <div className="button-group">
                 <button 
                     type ="button"
                     onClick={handleSave}>
@@ -107,6 +108,7 @@ export const EditGame = () => {
                     onClick={() => navigate(`/wishlists/${selectedWishlist}`)}>
                         Cancel
                 </button>
+            </div>
             </form>
         </div>
     )

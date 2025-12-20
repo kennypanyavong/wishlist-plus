@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getUserById, updateUser } from "../../services/userService"
 import { getLoggedInUser } from "../auth/Auth"
+import './EditProfile.css'
 
 export const EditProfile = () => {
     const { userId } = useParams()
@@ -36,7 +37,9 @@ export const EditProfile = () => {
     }
 
     return (
-        <form onSubmit={handleSave}>
+        <div className="edit-profile-container">
+
+        <form className="edit-profile-form" onSubmit={handleSave}>
             <input 
                 name="username"
                 value={user.username || ""}
@@ -55,6 +58,7 @@ export const EditProfile = () => {
                     </button>
                 </div>
         </form>
+        </div>
 
     )
 }
