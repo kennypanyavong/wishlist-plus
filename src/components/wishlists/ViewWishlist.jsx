@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getWishlistById, getWishlistGamesById } from "../../services/wishlistService.jsx"
 import { Link, Outlet, useParams } from "react-router-dom"
+import './ViewWishlist.css'
 
 
 export const ViewWishlist = () => {
@@ -16,13 +17,14 @@ export const ViewWishlist = () => {
     }, [wishlistId])
      
     return (
-        <div>
+        <div className="view-wishlist-container">
             <h1>{wishlist.name}</h1>
-            <article>
+            <article className="wishlist-games-grid">
                 {wishlistGames.map((wishlistGame) => {
                     return (
                         <div key={wishlistGame.id}>
-                            <Link to={`/wishlists/${wishlistId}/game/${wishlistGame.game.id}`}>
+                            <Link to={`/wishlists/${wishlistId}/game/${wishlistGame.game.id}`}
+                            className="wishlist-game-card">
                             <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
                             <p>${wishlistGame.game.price.toFixed(2)}</p>                         
                             </Link>
@@ -30,14 +32,14 @@ export const ViewWishlist = () => {
                     )
                 })}
             </article>
-            <div>
+            <div className="wishlist-buttons">
                 <Link to={`/wishlists/${wishlistId}/add_game`}>
                     <button>
                         Add Game
                     </button>
                 </Link>
             </div>
-            <div>
+            <div className="wishlist-buttons">
                 <Link to={`edit`}>
                     <button>
                         Edit List

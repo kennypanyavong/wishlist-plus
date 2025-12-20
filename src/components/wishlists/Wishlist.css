@@ -1,0 +1,30 @@
+/* Container for all wishlist cards */
+.wishlist-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #0b1a28; /* Steam dark background */
+}
+
+/* Individual wishlist card */
+.wishlist-card {
+  background-color: #1b2838; /* Steam card color */
+  border: 1px solid #3a4756;
+  border-radius: 5px;
+  padding: 1rem;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c7d5e0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.wishlist-card:hover {
+  background-color: #2a475e;
+  transform: scale(1.05);
+}
