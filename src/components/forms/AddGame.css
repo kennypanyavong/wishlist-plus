@@ -1,4 +1,6 @@
-/* Container for the Add Game page */
+/* ============================= */
+/* Container for Add Game page    */
+/* ============================= */
 .add-game-container {
   background-color: #0b1a28;
   min-height: 80vh;
@@ -6,11 +8,126 @@
   font-family: "Roboto", "Segoe UI", sans-serif;
   color: #c7d5e0;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }
 
-/* Form styling */
+/* ============================= */
+/* Page Title / Section Headers  */
+/* ============================= */
+.add-game-container h2 {
+  color: #66c0f4;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* ============================= */
+/* Steam Search Form             */
+/* ============================= */
+.steam-search-form {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.steam-search-form input {
+  padding: 0.5rem 0.8rem;
+  border-radius: 3px;
+  border: 1px solid #3a4756;
+  background-color: #1b2838;
+  color: #c7d5e0;
+  font-size: 1rem;
+  width: 250px;
+}
+
+.steam-search-form input:focus {
+  outline: none;
+  border-color: #66c0f4;
+}
+
+.steam-search-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #66c0f4;
+  color: #0b1a28;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.steam-search-form button:hover {
+  background-color: #53a5d8;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* Steam Results Grid            */
+/* ============================= */
+.steam-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px; /* limits width so it stays centered */
+}
+
+.steam-game-card {
+  background-color: #1b2838;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  color: #c7d5e0;
+  border: 1px solid #3a4756;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.steam-game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px rgba(102, 192, 244, 0.5);
+}
+
+.steam-game-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.steam-game-card h4 {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+.steam-game-card p {
+  margin: 0.3rem 0;
+  font-weight: bold;
+}
+
+.steam-game-card button {
+  margin-top: auto;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #66c0f4;
+  color: #0b1a28;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.steam-game-card button:hover {
+  background-color: #53a5d8;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* Manual Add Form Section       */
+/* ============================= */
 .add-game-form {
   background-color: #1b2838;
   padding: 2rem;
@@ -21,15 +138,20 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: stretch;
 }
 
 .add-game-form h2 {
   color: #66c0f4;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Inputs and select */
+.add-game-form p {
+  font-size: 0.9rem;
+  color: #c7d5e0;
+}
+
 .add-game-form input,
 .add-game-form select {
   padding: 0.6rem 0.8rem;
@@ -46,7 +168,6 @@
   border-color: #66c0f4;
 }
 
-/* Buttons */
 .add-game-form button {
   padding: 0.6rem 1rem;
   border: none;

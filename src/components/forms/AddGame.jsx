@@ -11,6 +11,8 @@ export const AddGame = () => {
     const [gameUrl, setGameUrl] = useState("")
     const [wishlists, setWishlists] = useState([])
     const [selectedWishlist, setSelectedWishlist] = useState("")
+    const [searchTerm, setSearchTerm] = useState("")
+    const [steamResults, setSteamResults] = useState([])
     const { wishlistId } = useParams()
     const loggedInUser = getLoggedInUser()
     const navigate = useNavigate()
@@ -25,13 +27,36 @@ export const AddGame = () => {
         }
     }, [wishlistId])
 
-    const handleSave = (event) => {
-        event.preventDefault()
-        
-                if (!gameTitle.trim()) {
-                    alert("Please enter a game title")
-                    return
-                }
+    const handleSteamSearch = (e) => {
+        e.preventDefault()
+        if (!searchTerm.trim()) return
+
+        console.log("Searching Steam for:", searchTerm)
+
+        fetch(`/steam-search?term=${encodeURIComponent(searchTerm)}&cc=US&l=english`)
+            .then(res => res.json())
+            .then(data => setSteamResults(data.items || []))
+    }
+
+    const handleAddSteamGame = (steamGame) => {
+        const newGame = {
+            userId: loggedInUser.id,
+            title: steamGame.name,
+            price: steamGame.price ? steamGame.price.final / 100 : 0,
+            imageUrl: steamGame.tiny_image
+        }
+
+        createGame(newGame)
+            .then((createdGame) => addGameToWishlist(Number(selectedWishlist), createdGame.id))
+            .then(() => navigate(`/wishlists/${selectedWishlist}`))
+    }
+
+    const handleSave = () => {
+
+        if (!gameTitle.trim()) {
+            alert("Please enter a game title")
+            return
+        }
                 
                 const newGame = {
                     userId: loggedInUser.id,
@@ -50,11 +75,41 @@ export const AddGame = () => {
                 
     }
 
+                console.log("Rendering steamResults:", steamResults)
+
+
     return (
         <div className="add-game-container">
             <div>
+                <h2>Add games to {wishlists.find(w => w.id === Number(selectedWishlist))?.name || "a Wishlist"} </h2>
+                <form onSubmit={handleSteamSearch}>
+                    <input
+                        type="text"
+                        placeholder="Search Steam..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button type="submit">Search</button>
+                </form>
+
+                <div className="steam-results-grid">
+                    {steamResults.map((game) => (
+                        <div key={game.id} className="steam-game-card">
+                            <img src={game.tiny_image} alt={game.name} />
+                            <h4>{game.name}</h4>
+                            {game.price ? <p>${(game.price.final / 100).toFixed(2)}</p> : <p>Free / N/A</p>}
+                            <button onClick={() => handleAddSteamGame(game)}>
+                                Add to Wishlist
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div>
                 <form className="add-game-form">
-                    <h2>Add a Game</h2>
+                    <h2>Couldn't Find What You Were Looking For?</h2> 
+                        <p>Add Game Details here!</p>
                         <input
                             type="text"
                             value={gameTitle}
@@ -73,7 +128,7 @@ export const AddGame = () => {
                             placeholder= "Enter image URL"
                             onChange= {(e) => setGameUrl(e.target.value)}
                         />
-
+                        <p>Want to add to a different list?</p>
                         <select
                             value={selectedWishlist}
                             onChange= {(e) => setSelectedWishlist(e.target.value)}
