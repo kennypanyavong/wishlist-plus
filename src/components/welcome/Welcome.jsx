@@ -44,26 +44,35 @@ export const Welcome = () => {
     }, [])
 
     if (loading) {
-        return <div className="welcome-container"><p>Loading...</p></div>
+        return <div className="welcome-container page-container"><p>Loading...</p></div>
     }
 
     return (
-        <div className="welcome-container">
+        <div className="welcome-container page-container">
             {randomGame ? (
-                <div className="random-game-card">
-                    <h2>Featured Game:</h2>
+                <div className="random-game-card grid-item">
+                    <h2 className="glitch" data-text="Featured Game:">Featured Game:</h2>
                     <img 
                         src={randomGame.game.imageUrl} 
-                        alt={randomGame.game.title} />
-                    <h3>{randomGame?.game?.title || "Unknown Game"}</h3>
-                    <p>{randomGame?.game?.price ? `$${randomGame.game.price.toFixed(2)}` : "Free / N/A"}</p>
+                        alt={randomGame.game.title} 
+                    />
+                    <h3 className="glitch" data-text={randomGame?.game?.title || "Unknown Game"}>
+                        {randomGame?.game?.title || "Unknown Game"}</h3>
+                    <p className="glitch" data-text={randomGame?.game?.price ? `$${randomGame.game.price.toFixed(2)}` : "Free / N/A"}>
+                        {randomGame?.game?.price ? `$${randomGame.game.price.toFixed(2)}` : "Free / N/A"}</p>
                     
-                    <button onClick={() => navigate(`/wishlists/${randomGame.wishlistId}`)}>
+                    <button 
+                        onClick={() => navigate(`/wishlists/${randomGame.wishlistId}`)}
+                        className="random-game-card-button btn-info">
                         Go to this wishlist
                     </button>
                 </div>
             ) : (
-                <article>To get started, create a wishlist!</article>
+                <article 
+                    className="welcome-message glitch" 
+                    data-text="To get started, create a wishlist and add some games!"
+                >
+                    To get started, create a wishlist and add some games!</article>
             )}
         </div>
     )

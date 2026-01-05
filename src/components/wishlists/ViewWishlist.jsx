@@ -17,8 +17,8 @@ export const ViewWishlist = () => {
     }, [wishlistId])
      
     return (
-        <div className="view-wishlist-container">
-            <h1>{wishlist.name}</h1>
+        <div className="view-wishlist-container page-container">
+            <h1 className="wishlist-header glitch" data-text={wishlist.name || "Wishlist"}>{wishlist.name}</h1>
             <article className="wishlist-games-grid">
                 {wishlistGames.map((wishlistGame) => {
                     return (
@@ -26,7 +26,7 @@ export const ViewWishlist = () => {
                             <Link to={`/wishlists/${wishlistId}/game/${wishlistGame.game.id}`}
                             className="wishlist-game-card">
                             <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
-                            <p>${wishlistGame.game.price.toFixed(2)}</p>                         
+                            <p className="game-price">${wishlistGame.game.price.toFixed(2)}</p>                         
                             </Link>
                         </div>
                     )
@@ -34,18 +34,23 @@ export const ViewWishlist = () => {
             </article>
             <div className="wishlist-buttons">
                 <Link to={`/wishlists/${wishlistId}/add_game`}>
-                    <button>
+                    <button className="cyber-btn">
                         Add Game
                     </button>
                 </Link>
-            </div>
-            <div className="wishlist-buttons">
                 <Link to={`edit`}>
-                    <button>
+                    <button className="cyber-btn">
                         Edit List
                     </button>
                 </Link>
-            </div>   
+                <Link to={`/wishlists`}>
+                    <button className="cyber-btn">
+                        Back
+                    </button>
+                </Link>
+            </div>
+            {/* <div className="wishlist-buttons">
+            </div>    */}
             {<Outlet />}
         </div>
     )

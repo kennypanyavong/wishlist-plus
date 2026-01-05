@@ -31,19 +31,24 @@ export const CreateWishlist = () => {
     return (
         <div className="create-wishlist-container">
             <form className="create-wishlist-form">
-            <h2>Create Wishlist</h2>
+            <h2 className="form-title glitch" data-text="Create Wishlist">Create Wishlist</h2>
                 <input
                     type ="text"
                     value = {wishlistName} 
                     placeholder="Enter wishlist name"
+                    className="cyber-input"
                     onChange = {(e) => setWishlistName(e.target.value)}
                     required
                 />
             </form>
-            <div>
-                <button type="submit" disabled={!wishlistName.trim()}
+            <div className="form-buttons">
+                <button 
+                    type="submit" 
+                    className="cyber-btn"
+                    disabled={!wishlistName.trim()}
                     onClick={handleSave}
-                >Create List</button>
+                >Create List
+                </button>
             </div>
             <div>
                 <button

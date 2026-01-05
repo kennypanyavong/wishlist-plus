@@ -1,55 +1,148 @@
+/* ==============================
+   NAVBAR BASE
+============================== */
 .navbar {
     display: flex;
-    background-color: #1b2838;
-    padding: 0.5rem 1rem;
-    list-style: none;
-    margin: 0;
-    font-family: "Roboto", "Segoe UI", sans-serif;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
+    background-color: rgba(27, 40, 56, 0.85); /* semi-transparent cyberpunk look */
+    padding: 0.7rem 2rem;
+    list-style: none;
     border-bottom: 1px solid #3a4756;
+    font-family: "Roboto", "Segoe UI", sans-serif;
+    gap: 2rem;
+    backdrop-filter: blur(4px); /* subtle glassy effect */
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
+/* ==============================
+   NAVBAR ITEMS
+============================== */
 .navbar-item {
     position: relative;
 }
 
-.navbar-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 0.5rem;
-    vertical-align: middle;
+/* ==============================
+   NAVBAR LINKS
+============================== */
+.navbar-link {
+    color: #66c0f4;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: 0.2s ease-in-out;
+    text-shadow: 0 0 2px #66c0f4, 0 0 5px #53a5d8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
+.navbar-link:hover {
+    color: #f0f0f0;
+    text-shadow: 
+        0 0 5px #ff00ff, 
+        0 0 10px #00ffff, 
+        0 0 15px #ff00ff;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   RIGHT-ALIGNED ITEMS
+============================== */
 .navbar-right-group {
     display: flex;
     align-items: center;
-    margin-left: auto; /* push entire group to the right */
-    gap: 1rem; /* space between Profile and Logout */
+    gap: 1rem;
+    margin-left: auto; /* pushes group to the right */
 }
 
-.profile-link {
-    display: flex;
-    align-items: center;
+/* ==============================
+   AVATAR STYLING
+============================== */
+.navbar-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem;
+    border: 2px solid #ff00ff;
+    transition: 0.2s all ease-in-out;
 }
 
-.navbar-item a {
-    color: #c7d5e0;
-    text-decoration: none;
-    padding: 0.5rem 0.8rem;
-    display: inline-block;
-    border-radius: 3px;
-    transition: background-color 0.2s, color 0.2s;
-    font-weight: 500;
+.neon-avatar {
+    box-shadow: 
+        0 0 5px #ff00ff, 
+        0 0 10px #ff00ff, 
+        0 0 15px #00ffff;
 }
 
-.navbar-item a:hover {
-    background-color: #66c0f4;
-    color: #0b1a28;
+.neon-avatar:hover {
+    box-shadow: 
+        0 0 10px #ff00ff, 
+        0 0 20px #ff00ff, 
+        0 0 30px #00ffff;
 }
 
-.navbar-logout a {
-    font-weight: bold;
+/* ==============================
+   LOGOUT LINK
+============================== */
+.navbar-logout .navbar-link {
+    color: #ff5555;
+    text-shadow: 0 0 2px #ff5555, 0 0 5px #ff0000;
+}
+
+.navbar-logout .navbar-link:hover {
+    text-shadow: 
+        0 0 5px #ff0000, 
+        0 0 10px #ff5555, 
+        0 0 15px #ff0000;
+    color: #fff;
+}
+
+/* ==============================
+   GLITCH EFFECT (OPTIONAL)
+============================== */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    animation: glitchTop 2s infinite linear alternate-reverse;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitchBottom 3s infinite linear alternate-reverse;
+    color: #00ffff;
+    z-index: -1;
+}
+
+@keyframes glitchTop {
+    0% { clip: rect(2px, 9999px, 6px, 0); transform: translate(-2px, -2px); }
+    25% { clip: rect(12px, 9999px, 14px, 0); transform: translate(2px, 2px); }
+    50% { clip: rect(6px, 9999px, 10px, 0); transform: translate(-2px, 1px); }
+    75% { clip: rect(10px, 9999px, 14px, 0); transform: translate(2px, -1px); }
+    100% { clip: rect(2px, 9999px, 6px, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+    0% { clip: rect(18px, 9999px, 22px, 0); transform: translate(2px, 0); }
+    25% { clip: rect(14px, 9999px, 18px, 0); transform: translate(-2px, 1px); }
+    50% { clip: rect(20px, 9999px, 24px, 0); transform: translate(1px, -1px); }
+    75% { clip: rect(16px, 9999px, 20px, 0); transform: translate(-1px, 2px); }
+    100% { clip: rect(18px, 9999px, 22px, 0); transform: translate(0, 0); }
 }

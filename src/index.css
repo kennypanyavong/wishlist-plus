@@ -1,68 +1,225 @@
+/* --------------------------- */
+/* BASE CYBERPUNK THEME STYLES */
+/* --------------------------- */
+
+/* Root variables for colors/glow */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #ff00ff;      /* Neon pink */
+  --secondary-color: #00ffff;    /* Neon cyan */
+  --text-color: rgba(255, 255, 255, 0.87);
+  --bg-color: #0b1a28;
+  --card-bg: rgba(15, 12, 41, 0.85);
+  --card-border: #ff00ff;
+  --glitch-offset: 2px;
+  --glitch-duration: 0.3s;
+  --font-main: "Roboto", "Segoe UI", sans-serif;
 }
 
+/* ----------------- */
+/* Body & Page Setup */
+/* ----------------- */
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-main);
+  color: var(--text-color);
+  background: linear-gradient(270deg, #0b1a28, #1a0b28, #0b281a, #1a2810);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* <-- stretch elements across full width */
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Animate the gradient background */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------------- */
+/* Links */
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--secondary-color);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* ----------------- */
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-main);
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--secondary-color);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* ----------------- */
+/* Buttons */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  padding: 0.8em 1.5em;
+  font-weight: bold;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgba(0,0,0,0.5);
+  color: var(--text-color);
   cursor: pointer;
-  transition: border-color 0.25s;
+  text-shadow: 0 0 3px var(--primary-color);
+  transition: all 0.3s ease;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 15px var(--secondary-color);
+  transform: translateY(-2px);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* ----------------- */
+/* Page container */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* center horizontally */
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* ----------------- */
+/* Grids (wishlist/games/cards) */
+.grid-container, 
+.wishlist-games-grid, 
+.wishlist-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center; /* center each card */
+  width: 100%;
+}
+
+/* ----------------- */
+/* Cards */
+.grid-item, .wishlist-card, .wishlist-game-card, .random-game-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+  transition: all 0.3s ease;
+  max-width: 360px;
+  position: relative;
+}
+
+/* Card hover glow + slight scale */
+.grid-item:hover,
+.wishlist-card:hover,
+.wishlist-game-card:hover,
+.random-game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color), 0 0 40px #66c0f4;
+}
+
+/* Images in cards */
+.grid-item img,
+.wishlist-card img,
+.wishlist-game-card img,
+.random-game-card img {
+  width: 100%;
+  min-height: 240px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+}
+
+/* ----------------- */
+/* Text glitch effect */
+.glitch {
+  position: relative;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: glitchAnim var(--glitch-duration) infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+}
+.glitch::before {
+  text-shadow: -var(--glitch-offset) 0 var(--secondary-color);
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchTop var(--glitch-duration) infinite linear alternate-reverse;
+}
+.glitch::after {
+  text-shadow: var(--glitch-offset) 0 var(--primary-color);
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchBottom var(--glitch-duration) infinite linear alternate-reverse;
+}
+
+@keyframes glitchAnim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+@keyframes glitchTop {
+  0% { clip: rect(0, 900px, 2px, 0); transform: translate(-2px, -2px); }
+  50% { clip: rect(4px, 900px, 6px, 0); transform: translate(2px, 2px); }
+  100% { clip: rect(2px, 900px, 4px, 0); transform: translate(-2px, 1px); }
+}
+@keyframes glitchBottom {
+  0% { clip: rect(6px, 900px, 8px, 0); transform: translate(1px, -1px); }
+  50% { clip: rect(8px, 900px, 10px, 0); transform: translate(-1px, 2px); }
+  100% { clip: rect(10px, 900px, 12px, 0); transform: translate(2px, -2px); }
+}
+
+/* ----------------- */
+/* Form overrides */
+.form-login, .form-container {
+  background: rgba(15, 12, 41, 0.85);
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+/* Input fields */
+input.form-control {
+  background: #0b1a28;
+  color: var(--text-color);
+  border: 1px solid #ff00ff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+input.form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 10px var(--secondary-color);
+  outline: none;
 }

@@ -19,15 +19,15 @@ export const Wishlist = () => {
                 {wishlists.map((wishlist) => {
                     return (
                         <Link 
-                        key={wishlist.id} 
-                        to={`/wishlists/${wishlist.id}`} 
-                        className="wishlist-card">
+                            key={wishlist.id} 
+                            to={`/wishlists/${wishlist.id}`} 
+                            className="wishlist-card">
                         {/* <img
                             src={wishlist.imageUrl}
                             alt={wishlist.name}
                             className="wishlist-card-img"
                         /> */}
-                            <header>{wishlist.name}</header>
+                            <header className="glitch" data-text={wishlist.name}>{wishlist.name}</header>
                         </Link>
                     )
                 })}
