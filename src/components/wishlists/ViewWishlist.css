@@ -1,78 +1,117 @@
-/* Container for the wishlist page */
+/* ==============================
+   PAGE CONTAINER
+============================== */
 .view-wishlist-container {
-  background-color: #0b1a28; /* Steam dark background */
-  min-height: 80vh;
-  padding: 2rem;
-  font-family: "Roboto", "Segoe UI", sans-serif;
-  color: #c7d5e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0b0f1a, #1a001f);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
 }
 
-/* Wishlist title */
+/* ==============================
+   WISHLIST TITLE
+============================== */
 .view-wishlist-container h1 {
-  font-size: 2rem;
-  color: #66c0f4; /* Steam accent color */
-  margin-bottom: 1.5rem;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+    font-size: 2.5rem;
 }
 
-/* Grid of games */
+/* ==============================
+   WISHLIST GAMES GRID
+============================== */
 .wishlist-games-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
 }
 
-/* Individual game card */
+/* ==============================
+   GAME CARD
+============================== */
 .wishlist-game-card {
-  background-color: #1b2838;
-  border: 1px solid #3a4756;
-  border-radius: 5px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: #c7d5e0;
-  transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    height: 300px;
+    background-color: rgba(27, 40, 56, 0.85);
+    border-radius: 15px;
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    text-decoration: none;
+    color: #c7d5e0;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.3s, background-color 0.2s;
+    text-align: center;
+    position: relative;
+}
+
+.wishlist-game-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #ff00ff;
 }
 
 .wishlist-game-card:hover {
-  background-color: #2a475e;
-  transform: scale(1.03);
+    transform: scale(1.05);
+    background-color: rgba(40, 0, 40, 0.85);
+    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
 }
 
-/* Game image */
-.wishlist-game-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Price / info section */
+/* ==============================
+   PRICE TEXT
+============================== */
 .wishlist-game-card p {
-  padding: 0.5rem;
-  font-weight: 500;
-  text-align: center;
-  margin: 0;
+    margin: 0.25rem 0;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
 }
 
-/* Buttons for Add/Edit */
+/* ==============================
+   BUTTONS
+============================== */
 .wishlist-buttons {
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .wishlist-buttons button {
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 3px;
-  background-color: #66c0f4;
-  color: #0b1a28;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+    padding: 0.8rem 1.2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff00ff;
+    color: #0b0f1a;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .wishlist-buttons button:hover {
-  background-color: #53a5d8;
-  transform: translateY(-2px);
+    transform: translateY(-2px);
+    background-color: #ff55ff;
+    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+}
+
+/* ==============================
+   BACKGROUND ANIMATION
+============================== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

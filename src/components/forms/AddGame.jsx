@@ -153,9 +153,6 @@ export const AddGame = () => {
                                 onClick={() => handleAddSteamGame(game)}>
                                 {isAlreadyAdded(game) ? "Already Added" : "Add to Wishlist"}           
                             </button>
-                            {/* <button onClick={() => handleAddSteamGame(game)}>
-                                Add to Wishlist
-                            </button> */}
                         </div>
                     ))}
                 </div>

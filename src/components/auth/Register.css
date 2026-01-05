@@ -1,102 +1,120 @@
-/* Container for the register page */
+/* ==============================
+   PAGE CONTAINER
+============================== */
 .container-register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-  background-color: #0b1a28; /* Steam dark background */
-  font-family: "Roboto", "Segoe UI", sans-serif;
-  color: #c7d5e0;
-  padding: 2rem;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #0b0f1a, #1a001f);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    gap: 2rem;
 }
 
-/* Form container with Steam card style */
+/* ==============================
+   FORM CONTAINER
+============================== */
 .form-login {
-  background-color: #1b2838; /* Card background */
-  padding: 2rem 3rem;
-  border-radius: 5px;
-  border: 1px solid #3a4756;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgba(27, 40, 56, 0.85);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    width: 350px;
+    max-width: 90%;
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Form headings */
+.form-login:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+}
+
+/* ==============================
+   HEADINGS
+============================== */
 .form-login h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #66c0f4; /* Steam accent color */
+    font-size: 2.5rem;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
 }
 
 .form-login h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #c7d5e0;
+    font-size: 1.5rem;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
 }
 
-/* Fieldset styling */
-.form-login fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Input group styling */
-.form-group {
-  margin-bottom: 1rem;
-}
-
+/* ==============================
+   FORM INPUTS
+============================== */
 .form-control {
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  border-radius: 3px;
-  border: 1px solid #3a4756;
-  background-color: #0b1a28; /* match background */
-  color: #c7d5e0;
-  font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #ff00ff;
+    background-color: #0b0f1a;
+    color: #c7d5e0;
+    font-size: 1.1rem;
+    box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-control::placeholder {
-  color: #8f98a0;
-}
-
-/* Input focus effect */
 .form-control:focus {
-  outline: none;
-  border-color: #66c0f4;
-  box-shadow: 0 0 5px rgba(102, 192, 244, 0.5);
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
 }
 
-/* Button styling */
+/* ==============================
+   BUTTONS
+============================== */
 .login-btn {
-  width: 100%;
-  background-color: #66c0f4; /* Steam accent */
-  color: #0b1a28;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 3px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+    width: 100%;
+    background-color: #ff00ff;
+    color: #0b0f1a;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .login-btn:hover {
-  background-color: #53a5d8;
-  transform: translateY(-2px);
+    transform: translateY(-2px);
+    background-color: #ff55ff;
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
 }
 
-/* Bottom link */
-.container-register div a {
-  color: #66c0f4;
-  text-decoration: none;
-  margin-left: 0.3rem;
-  transition: color 0.2s;
+/* ==============================
+   LOGIN LINK
+============================== */
+.container-register a {
+    color: #00ffff;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    transition: text-shadow 0.3s;
 }
 
-.container-register div a:hover {
-  color: #53a5d8;
+.container-register a:hover {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+/* ==============================
+   BACKGROUND ANIMATION
+============================== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

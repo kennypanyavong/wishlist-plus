@@ -1,4 +1,4 @@
-/* Reset some default browser styles */
+/* Base reset (keep as is) */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,124 +11,102 @@ body, html, #root {
   font-family: "Roboto", "Segoe UI", sans-serif;
   background-color: #0b1a28;
   color: #c7d5e0;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-/* Main page container for all pages */
+/* Main page container */
 .page-container {
   min-height: 100vh;
   width: 100%;
   padding: 2rem 4rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Content stretches naturally */
+  align-items: center; /* Center all content horizontally */
   gap: 2rem;
 }
 
 /* Headings */
 h1 {
-  font-size: 2.5rem;
-  color: #66c0f4;
+  font-size: 3rem;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
-/* Buttons (reusable across all pages) */
+/* Buttons */
 button {
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 3px;
-  background-color: #66c0f4;
-  color: #0b1a28;
+  border-radius: 12px;
+  background-color: rgba(255, 0, 255, 0.3);
+  color: #c7d5e0;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+  text-shadow: 0 0 5px #ff00ff;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #53a5d8;
-  transform: translateY(-2px);
+  background-color: rgba(0, 255, 255, 0.3);
+  border-color: #00ffff;
+  box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff;
 }
 
-/* Danger button */
-button.danger {
-  background-color: #d9534f;
-  color: #fff;
-}
-
-button.danger:hover {
-  background-color: #c9302c;
-}
-
-/* Shared form container */
-.form-container {
-  width: 100%;
-  max-width: 600px; /* bigger for Steam-style feel */
-  background-color: #1b2838;
-  padding: 2rem;
-  border-radius: 5px;
-  border: 1px solid #3a4756;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Inputs and selects */
-.form-container input,
-.form-container select {
-  padding: 0.8rem 1rem;
-  border-radius: 3px;
-  border: 1px solid #3a4756;
-  background-color: #0b1a28;
-  color: #c7d5e0;
-  font-size: 1.1rem;
-}
-
-.form-container input:focus,
-.form-container select:focus {
-  outline: none;
-  border-color: #66c0f4;
-}
-
-
-/* Grid of wishlists/games */
-.grid-container {
+/* Grid containers for wishlists/games */
+.grid-container, .wishlist-games-grid, .wishlist-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* bigger cards */
+  gap: 2rem;
+  justify-items: center; /* center cards horizontally */
   width: 100%;
 }
 
-.grid-item {
-  background-color: #1b2838;
-  border: 1px solid #3a4756;
-  border-radius: 5px;
-  overflow: hidden;
+/* Individual grid item */
+.grid-item, .wishlist-card, .wishlist-game-card, .random-game-card {
+  background: rgba(15, 12, 41, 0.8);
+  border: 2px solid #ff00ff;
+  border-radius: 16px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-.grid-item:hover {
-  background-color: #2a475e;
-  transform: scale(1.03);
-}
-
-.grid-item img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-bottom: 1px solid #3a4756;
-  margin-bottom: 0.5rem;
-}
-
-.grid-item p {
-  margin: 0.25rem 0;
   text-align: center;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  transition: all 0.3s ease;
+  max-width: 280px; /* ensures cards are uniform size */
+}
+
+.grid-item img, 
+.wishlist-card img, 
+.wishlist-game-card img, 
+.random-game-card img {
+  width: 100%;
+  height: 220px; /* bigger images */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+/* Hover effects */
+.grid-item:hover,
+.wishlist-card:hover,
+.wishlist-game-card:hover,
+.random-game-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 40px #66c0f4;
+}
+
+/* Center welcome messages and add spacing */
+.welcome-container, .user-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
