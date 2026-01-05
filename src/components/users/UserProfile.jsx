@@ -17,6 +17,13 @@ export const UserProfile = () => {
     return (
         <div className="user-profile-container">
             <article className="user-profile-info">
+                {userProfile.avatarUrl && (
+                    <img 
+                        src={userProfile.avatarUrl}
+                        alt={`${userProfile.username}'s avatar`}
+                        className="user-avatar"
+                    />
+                )}
                 <h1>{userProfile?.username}</h1>
                 <h2>{wishlists.length} Wishlists</h2>
             </article>

@@ -4,6 +4,7 @@ import { getUserById, updateUser } from "../../services/userService"
 import { getLoggedInUser } from "../auth/Auth"
 import './EditProfile.css'
 
+
 export const EditProfile = () => {
     const { userId } = useParams()
     const [ user, setUser] = useState({})
@@ -22,10 +23,12 @@ export const EditProfile = () => {
         const editedUser = {
             id: user.id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            avatarUrl: user.avatarUrl
         }
 
         updateUser(editedUser).then(() => {
+            localStorage.setItem("wishlist_user", JSON.stringify(editedUser))
             navigate(`/profile/${loggedInUser.id}`)
         })
     } 
@@ -48,6 +51,13 @@ export const EditProfile = () => {
             <input
                 name="email"
                 value={user.email || ""}
+                onChange={handleInputChange}
+            />
+            <input
+                name="avatarUrl"
+                type="text"
+                value={user.avatarUrl || ""}
+                placeholder="Avatar Image Url"
                 onChange={handleInputChange}
             />
                 <div className="form-group">

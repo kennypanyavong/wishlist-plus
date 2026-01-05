@@ -16,8 +16,18 @@ export const NavBar = () => {
         <li className="navbar-item">
             <Link to="/wishlists">View All Wishlists</Link>
         </li>
+        <div className="navbar-right-group">
+
         <li className="navbar-item">
-            <Link to={`/profile/${userId}`}>Profile</Link>
+            <Link to={`/profile/${userId}`} className={"profile-link"}>
+                {loggedInUser?.avatarUrl && (
+                    <img 
+                        src={loggedInUser.avatarUrl}
+                        alt="Avatar"
+                        className="navbar-avatar"
+                    />
+                )}
+            Profile</Link>
         </li>
         <li className="navbar-item navbar-logout" >
             <Link
@@ -30,5 +40,6 @@ export const NavBar = () => {
                 >Logout
             </Link>
         </li>
+        </div>
     </ul>
 }

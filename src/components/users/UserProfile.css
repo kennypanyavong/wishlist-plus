@@ -27,6 +27,14 @@
   font-weight: 500;
 }
 
+.user-avatar {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
 /* Edit button */
 .user-profile-container button {
   padding: 0.6rem 1.2rem;
