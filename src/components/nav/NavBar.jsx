@@ -8,6 +8,8 @@ export const NavBar = () => {
     const userId = loggedInUser?.id
 
     return <ul className="navbar">
+        <li className="navbar-item"></li>
+            <Link to="/">Home</Link>
         <li className="navbar-item">
             <Link to="/create_wishlist">Create New Wishlist</Link>
         </li>
