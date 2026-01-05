@@ -5,9 +5,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
     min-height: 100vh;
     padding: 2rem 1rem;
+    gap: 2rem;
     background: linear-gradient(135deg, #0b0f1a, #1a001f);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -24,72 +24,109 @@
     border: 2px solid #ff00ff;
     border-radius: 15px;
     padding: 2rem;
-    width: 300px;
+    width: 350px;
+    max-width: 90%;
     gap: 1rem;
     box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.user-profile-info:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+    text-align: center;
 }
 
 /* ==============================
-   AVATAR
+   USER AVATAR
 ============================== */
 .user-avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 2px solid #ff00ff;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
     object-fit: cover;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border: 3px solid #ff00ff;
+    transition: 0.2s all ease-in-out;
 }
 
-.user-avatar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+.neon-avatar {
+    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #00ffff;
+}
+
+.neon-avatar:hover {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #00ffff;
 }
 
 /* ==============================
-   USERNAME & WISHLISTS
+   USERNAME & WISHLIST COUNT
 ============================== */
 .user-profile-info h1,
 .user-profile-info h2 {
     color: #66c0f4;
     text-shadow: 0 0 3px #ff00ff, 0 0 5px #00ffff;
-    text-align: center;
-}
-
-.user-profile-info h1 {
-    font-size: 2rem;
-}
-
-.user-profile-info h2 {
-    font-size: 1.5rem;
 }
 
 /* ==============================
    EDIT BUTTON
 ============================== */
-.user-profile-container button {
+.cyber-btn {
     background-color: #ff00ff;
     color: #0b0f1a;
     font-weight: bold;
     border: none;
-    padding: 0.8rem 1.2rem;
-    border-radius: 10px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-.user-profile-container button:hover {
+.cyber-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
     background-color: #ff55ff;
+}
+
+/* ==============================
+   GLITCH EFFECT
+============================== */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    animation: glitchTop 5s infinite linear alternate-reverse;
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitchBottom 6s infinite linear alternate-reverse;
+    color: #00ffff;
+    z-index: -1;
+}
+
+/* ==============================
+   GLITCH ANIMATIONS (SLOWER)
+============================== */
+@keyframes glitchTop {
+    0%   { clip: rect(2px, 9999px, 6px, 0); transform: translate(-1px, -1px); }
+    25%  { clip: rect(12px, 9999px, 14px, 0); transform: translate(1px, 1px); }
+    50%  { clip: rect(6px, 9999px, 10px, 0); transform: translate(-1px, 0); }
+    75%  { clip: rect(10px, 9999px, 14px, 0); transform: translate(1px, -1px); }
+    100% { clip: rect(2px, 9999px, 6px, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+    0%   { clip: rect(18px, 9999px, 22px, 0); transform: translate(1px, 0); }
+    25%  { clip: rect(14px, 9999px, 18px, 0); transform: translate(-1px, 0.5px); }
+    50%  { clip: rect(20px, 9999px, 24px, 0); transform: translate(0.5px, -0.5px); }
+    75%  { clip: rect(16px, 9999px, 20px, 0); transform: translate(-0.5px, 1px); }
+    100% { clip: rect(18px, 9999px, 22px, 0); transform: translate(0, 0); }
 }
 
 /* ==============================

@@ -15,20 +15,24 @@ export const UserProfile = () => {
     }, [userId])
 
     return (
-        <div className="user-profile-container">
+        <div className="user-profile-container page-container">
             <article className="user-profile-info">
                 {userProfile.avatarUrl && (
                     <img 
                         src={userProfile.avatarUrl}
                         alt={`${userProfile.username}'s avatar`}
-                        className="user-avatar"
+                        className="user-avatar neon-avatar"
                     />
                 )}
-                <h1>{userProfile?.username}</h1>
-                <h2>{wishlists.length} Wishlists</h2>
+                <h1 className="glitch" data-text={userProfile?.username || "Unknown User"}>
+                    {userProfile?.username || "Unknown User"}
+                </h1>
+                <h2 className="glitch" data-text={`${wishlists.length} Wishlists`}>
+                    {wishlists.length} Wishlists
+                </h2>
             </article>
             <Link to={`/profile/${userProfile.id}/edit`}>
-                <button>Edit</button>
+                <button className="cyber-btn">Edit</button>
             </Link>
         </div>
     )

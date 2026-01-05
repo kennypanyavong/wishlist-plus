@@ -66,7 +66,7 @@ export const EditGame = () => {
     return(
         <div className="edit-game-container">
             <form className="edit-game-form">
-                <h2>Edit Game</h2>
+                <h2 className="glitch" data-text="Edit Game">Edit Game</h2>
 
                 <input 
                     type ="text"
@@ -100,11 +100,13 @@ export const EditGame = () => {
             <div className="button-group">
                 <button 
                     type ="button"
+                    className="neon-btn"
                     onClick={handleSave}>
                         Save Changes
                 </button>
                 <button 
                     type ="button"
+                    className="neon-btn"
                     onClick={() => navigate(`/wishlists/${selectedWishlist}`)}>
                         Cancel
                 </button>

@@ -1,58 +1,116 @@
 /* ==============================
-   PAGE CONTAINER
+   WISHLIST GRID CONTAINER
 ============================== */
 .wishlist-grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* center the cards */
-    gap: 2rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, #0b0f1a, #1a001f);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0f1a, #1a001f);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  justify-items: center;
 }
 
 /* ==============================
    WISHLIST CARD
 ============================== */
 .wishlist-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 250px; /* bigger card */
-    height: 250px; /* square-ish for better visual */
-    background-color: rgba(27, 40, 56, 0.85);
-    border-radius: 15px;
-    border: 2px solid #ff00ff;
-    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
-    text-decoration: none;
-    color: #c7d5e0;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.3s, background-color 0.2s;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  text-decoration: none;
+  color: #66c0f4;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: rgba(27, 40, 56, 0.85);
+  border: 2px solid #ff00ff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Optional card image */
+.wishlist-card-img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-bottom: 1px solid #ff00ff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+/* Hover effect */
 .wishlist-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
-    background-color: rgba(40, 0, 40, 0.85);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+  border-color: #00ffff;
 }
 
-/* Optional neon glitch header inside card */
-.wishlist-card header {
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
-    font-size: 1.3rem;
+/* ==============================
+   GLITCH HEADER
+============================== */
+.wishlist-card header.glitch {
+  position: relative;
+  margin-top: 0.5rem;
+  z-index: 1;
+  color: #66c0f4;
+  text-shadow: 0 0 3px #ff00ff, 0 0 5px #00ffff;
+}
+
+.wishlist-card header.glitch::before,
+.wishlist-card header.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.wishlist-card header.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  color: #ff00ff;
+  z-index: -1;
+}
+
+.wishlist-card header.glitch::after {
+  animation: glitchBottom 3s infinite linear alternate-reverse;
+  color: #00ffff;
+  z-index: -1;
 }
 
 /* ==============================
    BACKGROUND ANIMATION
 ============================== */
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==============================
+   GLITCH ANIMATIONS
+============================= */
+@keyframes glitchTop {
+  0% { clip: rect(2px, 9999px, 6px, 0); transform: translate(-2px, -2px); }
+  25% { clip: rect(12px, 9999px, 14px, 0); transform: translate(2px, 2px); }
+  50% { clip: rect(6px, 9999px, 10px, 0); transform: translate(-2px, 1px); }
+  75% { clip: rect(10px, 9999px, 14px, 0); transform: translate(2px, -1px); }
+  100% { clip: rect(2px, 9999px, 6px, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(18px, 9999px, 22px, 0); transform: translate(2px, 0); }
+  25% { clip: rect(14px, 9999px, 18px, 0); transform: translate(-2px, 1px); }
+  50% { clip: rect(20px, 9999px, 24px, 0); transform: translate(1px, -1px); }
+  75% { clip: rect(16px, 9999px, 20px, 0); transform: translate(-1px, 2px); }
+  100% { clip: rect(18px, 9999px, 22px, 0); transform: translate(0, 0); }
 }

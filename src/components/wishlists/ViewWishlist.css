@@ -1,83 +1,80 @@
 /* ==============================
-   PAGE CONTAINER
+   PAGE CONTAINER & BACKGROUND
 ============================== */
 .view-wishlist-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    gap: 2rem;
     min-height: 100vh;
+    padding: 2rem 1rem;
     background: linear-gradient(135deg, #0b0f1a, #1a001f);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
+    gap: 2rem;
 }
 
 /* ==============================
-   WISHLIST TITLE
+   WISHLIST HEADER
 ============================== */
-.view-wishlist-container h1 {
-    color: #ff00ff;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+.wishlist-header {
     font-size: 2.5rem;
+    color: #66c0f4;
+    text-align: center;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
 }
 
 /* ==============================
    WISHLIST GAMES GRID
 ============================== */
 .wishlist-games-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
     width: 100%;
+    max-width: 1200px;
 }
 
 /* ==============================
-   GAME CARD
+   INDIVIDUAL GAME CARD
 ============================== */
 .wishlist-game-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 220px;
-    height: 300px;
     background-color: rgba(27, 40, 56, 0.85);
-    border-radius: 15px;
     border: 2px solid #ff00ff;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    border-radius: 15px;
+    padding: 1rem;
+    gap: 0.5rem;
     text-decoration: none;
-    color: #c7d5e0;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 0.5rem;
-    transition: transform 0.2s, box-shadow 0.3s, background-color 0.2s;
-    text-align: center;
-    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
 }
 
+.wishlist-game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+}
+
+/* ==============================
+   GAME IMAGE
+============================== */
 .wishlist-game-card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ff00ff;
-}
-
-.wishlist-game-card:hover {
-    transform: scale(1.05);
-    background-color: rgba(40, 0, 40, 0.85);
-    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
 }
 
 /* ==============================
-   PRICE TEXT
+   GAME PRICE
 ============================== */
-.wishlist-game-card p {
-    margin: 0.25rem 0;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+.game-price {
+    color: #66c0f4;
+    text-shadow: 0 0 3px #ff00ff, 0 0 5px #00ffff;
+    font-weight: bold;
 }
 
 /* ==============================
@@ -86,25 +83,82 @@
 .wishlist-buttons {
     display: flex;
     gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.wishlist-buttons button {
-    padding: 0.8rem 1.2rem;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
+.cyber-btn {
     background-color: #ff00ff;
     color: #0b0f1a;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    font-weight: bold;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-.wishlist-buttons button:hover {
-    transform: translateY(-2px);
+.cyber-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
     background-color: #ff55ff;
-    box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+}
+
+.cancel-btn {
+    background-color: #00ffff;
+    color: #0b0f1a;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+.cancel-btn:hover {
+    background-color: #55ffff;
+}
+
+/* ==============================
+   GLITCH EFFECT
+============================== */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+    animation: glitchTop 5s infinite linear alternate-reverse; /* slower glitch */
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitchBottom 6s infinite linear alternate-reverse; /* slower glitch */
+    color: #00ffff;
+    z-index: -1;
+}
+
+@keyframes glitchTop {
+    0%   { clip: rect(2px, 9999px, 6px, 0); transform: translate(-1px, -1px); }
+    25%  { clip: rect(12px, 9999px, 14px, 0); transform: translate(1px, 1px); }
+    50%  { clip: rect(6px, 9999px, 10px, 0); transform: translate(-1px, 0); }
+    75%  { clip: rect(10px, 9999px, 14px, 0); transform: translate(1px, -1px); }
+    100% { clip: rect(2px, 9999px, 6px, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+    0%   { clip: rect(18px, 9999px, 22px, 0); transform: translate(1px, 0); }
+    25%  { clip: rect(14px, 9999px, 18px, 0); transform: translate(-1px, 0.5px); }
+    50%  { clip: rect(20px, 9999px, 24px, 0); transform: translate(0.5px, -0.5px); }
+    75%  { clip: rect(16px, 9999px, 20px, 0); transform: translate(-0.5px, 1px); }
+    100% { clip: rect(18px, 9999px, 22px, 0); transform: translate(0, 0); }
 }
 
 /* ==============================

@@ -68,8 +68,11 @@ export const Welcome = () => {
                     </button>
                 </div>
             ) : (
-                <article className="welcome-message glitch" data-text="To get started, create a wishlist!">
-                    To get started, create a wishlist!</article>
+                <article 
+                    className="welcome-message glitch" 
+                    data-text="To get started, create a wishlist and add some games!"
+                >
+                    To get started, create a wishlist and add some games!</article>
             )}
         </div>
     )

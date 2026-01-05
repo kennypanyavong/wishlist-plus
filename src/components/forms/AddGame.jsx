@@ -121,18 +121,26 @@ export const AddGame = () => {
             )}
 
             <div>
-                <h2>Add games to {wishlists.find(w => w.id === Number(selectedWishlist))?.name || "a Wishlist"} </h2>
+                <h2 
+                    className="glitch" 
+                    data-text={
+                        `Add games to ${wishlists.find(w => 
+                            w.id === Number(selectedWishlist))?.name || "a Wishlist"}`}>
+                                Add games to {wishlists.find(w => w.id === Number   (selectedWishlist))?.name || "a Wishlist"} 
+                </h2>
 
                 <div className="steam-search-section">
-                    <h2>Search the Steam Store</h2>
-                    <form onSubmit={handleSteamSearch}>
+                    <h2 className="glitch" data-text="Search the Steam Store">
+                        Search the Steam Store
+                    </h2>
+                    <form className="steam-search-form" onSubmit={handleSteamSearch}>
                         <input
                             type="text"
                             placeholder="Search Steam..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button type="submit">Search</button>
+                        <button type="submit" className="neon-btn">Search</button>
                     </form>
                 </div>
 
@@ -149,6 +157,7 @@ export const AddGame = () => {
                             <h4>{game.name}</h4>
                             {game.price ? <p>${(game.price.final / 100).toFixed(2)}</p> : <p>Free / N/A</p>}
                             <button
+                                className="neon-btn"
                                 disabled={isAlreadyAdded(game)} 
                                 onClick={() => handleAddSteamGame(game)}>
                                 {isAlreadyAdded(game) ? "Already Added" : "Add to Wishlist"}           
@@ -160,7 +169,7 @@ export const AddGame = () => {
 
             <div className="manual-add-section">
                 <form className="add-game-form">
-                    <h2>Couldn't find it?</h2> 
+                    <h2 className="glitch" data-text="Couldn't find it?">Couldn't find it?</h2> 
                         <p>Add Game Details here!</p>
                         <input
                             type="text"
@@ -197,9 +206,12 @@ export const AddGame = () => {
             </div>
 
             <div>
-                <button type="submit" 
+                <button 
+                    className="neon-btn"
+                    type="submit" 
                     onClick={handleSave}
-                    >Add this game!
+                >
+                    Add this game!
                 </button>
             </div>
         </div>

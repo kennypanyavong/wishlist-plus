@@ -1,79 +1,158 @@
-/* Container for the create wishlist page */
+/* ==============================
+   CREATE WISHLIST CONTAINER
+============================== */
 .create-wishlist-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 70vh;
-  background-color: #0b1a28; /* Steam dark background */
-  font-family: "Roboto", "Segoe UI", sans-serif;
-  color: #c7d5e0;
-  padding: 2rem;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  gap: 2rem;
+  background: linear-gradient(135deg, #0b0f1a, #1a001f);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
-/* Form card */
+/* ==============================
+   FORM CARD
+============================== */
 .create-wishlist-form {
-  background-color: #1b2838; /* Card background */
-  padding: 2rem 2.5rem;
-  border-radius: 5px;
-  border: 1px solid #3a4756;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  width: 100%;
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(27, 40, 56, 0.85);
+  border: 2px solid #ff00ff;
+  border-radius: 15px;
+  padding: 2rem;
+  width: 350px;
+  max-width: 90%;
+  gap: 1.5rem;
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.create-wishlist-form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px #ff00ff, 0 0 50px #00ffff;
+}
+
+/* ==============================
+   FORM TITLE
+============================== */
+.form-title {
+  font-size: 2rem;
+  color: #66c0f4;
+  text-shadow: 0 0 3px #ff00ff, 0 0 5px #00ffff;
   text-align: center;
 }
 
-/* Heading */
-.create-wishlist-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #66c0f4; /* Steam accent color */
+/* reuse glitch animation from navbar/welcome */
+.form-title.glitch {
+  position: relative;
 }
 
-/* Input field */
-.create-wishlist-form input[type="text"] {
+.form-title.glitch::before,
+.form-title.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
   width: 100%;
-  padding: 0.6rem 0.8rem;
-  border-radius: 3px;
-  border: 1px solid #3a4756;
-  background-color: #0b1a28;
-  color: #c7d5e0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.form-title.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  color: #ff00ff;
+  z-index: -1;
+}
+
+.form-title.glitch::after {
+  animation: glitchBottom 3s infinite linear alternate-reverse;
+  color: #00ffff;
+  z-index: -1;
+}
+
+/* ==============================
+   INPUT
+============================== */
+.cyber-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #00ffff;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #e6f1ff;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  transition: all 0.2s ease-in-out;
 }
 
-.create-wishlist-form input[type="text"]::placeholder {
-  color: #8f98a0;
-}
-
-.create-wishlist-form input[type="text"]:focus {
+.cyber-input:focus {
   outline: none;
-  border-color: #66c0f4;
-  box-shadow: 0 0 5px rgba(102,192,244,0.5);
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
 }
 
-/* Buttons */
-.create-wishlist-form button {
-  background-color: #66c0f4;
-  color: #0b1a28;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 3px;
+/* ==============================
+   BUTTONS
+============================== */
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cyber-btn {
+  background-color: #ff00ff;
+  color: #0b0f1a;
   font-weight: bold;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 0.5rem;
-  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-.create-wishlist-form button:hover {
-  background-color: #53a5d8;
-  transform: translateY(-2px);
+.cyber-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+  background-color: #ff55ff;
 }
 
-/* Disabled button state */
-.create-wishlist-form button:disabled {
-  background-color: #3a4756;
+.cyber-btn:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
-  color: #8f98a0;
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+}
+
+/* ==============================
+   BACKGROUND ANIMATION
+============================== */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==============================
+   GLITCH ANIMATIONS
+============================= */
+@keyframes glitchTop {
+  0% { clip: rect(2px, 9999px, 6px, 0); transform: translate(-2px, -2px); }
+  25% { clip: rect(12px, 9999px, 14px, 0); transform: translate(2px, 2px); }
+  50% { clip: rect(6px, 9999px, 10px, 0); transform: translate(-2px, 1px); }
+  75% { clip: rect(10px, 9999px, 14px, 0); transform: translate(2px, -1px); }
+  100% { clip: rect(2px, 9999px, 6px, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(18px, 9999px, 22px, 0); transform: translate(2px, 0); }
+  25% { clip: rect(14px, 9999px, 18px, 0); transform: translate(-2px, 1px); }
+  50% { clip: rect(20px, 9999px, 24px, 0); transform: translate(1px, -1px); }
+  75% { clip: rect(16px, 9999px, 20px, 0); transform: translate(-1px, 2px); }
+  100% { clip: rect(18px, 9999px, 22px, 0); transform: translate(0, 0); }
 }

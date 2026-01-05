@@ -43,6 +43,8 @@ export const EditProfile = () => {
         <div className="edit-profile-container">
 
         <form className="edit-profile-form" onSubmit={handleSave}>
+            <h2 className="form-title glitch" data-text="Edit Profile">Edit Profile</h2>
+
             <input 
                 name="username"
                 value={user.username || ""}
@@ -62,7 +64,7 @@ export const EditProfile = () => {
             />
                 <div className="form-group">
                     <button 
-                        className="form-btn btn-primary" 
+                        className="form-btn glitch-btn btn-primary" 
                         type="submit">
                             Save Changes
                     </button>

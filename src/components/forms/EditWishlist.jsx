@@ -54,8 +54,9 @@ export const EditWishlist = () => {
        
     return (
         <div className="edit-wishlist-container">
-            <h2>Edit Wishlist</h2>
+            <h2 className="glitch" data-text="Edit Wishlist">Edit Wishlist</h2>
             <input 
+                className="wishlist-name-input"
                 value={wishlist.name}
                 onChange={(e) =>
                     setWishlist({ ...wishlist, name: e.target.value})
@@ -67,7 +68,7 @@ export const EditWishlist = () => {
                         <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
                         <p>{wishlistGame.game.title}</p>
                         <p>${wishlistGame.game.price.toFixed(2)}</p>
-                        <button onClick={() => handleDeleteGame(wishlistGame.id)} className="danger">
+                        <button onClick={() => handleDeleteGame(wishlistGame.id)} className="danger neon-btn">
                             Remove Game
                         </button>
                         
@@ -75,15 +76,22 @@ export const EditWishlist = () => {
                 ))}
             </div>
             <div className="wishlist-buttons">
-                <button onClick={() => navigate(`/wishlists/${wishlistId}/add_game`)}>
+                <button 
+                    className="neon-btn"
+                    onClick={() => navigate(`/wishlists/${wishlistId}/add_game`)}>
                     Add Game
                 </button>
             
-                <button onClick={handleSave}>
+                <button 
+                    className="neon-btn"
+                    onClick={handleSave}>
                     Save Changes
                 </button>
             
-                <button onClick={handleDeleteWishlist} className="danger">
+                <button 
+                    className="danger neon-btn"
+                    onClick={handleDeleteWishlist} 
+                    >
                     Delete List
                 </button>
             </div>

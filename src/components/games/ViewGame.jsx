@@ -16,10 +16,10 @@ export const ViewGame = () => {
         <div className="view-game-container">
             <article className="game-card">            
                 <div key={gameInfo.id}>
-                    <img src={gameInfo.imageUrl} alt={gameInfo.title} />
-                    <header>{gameInfo.title}</header>
+                    <img src={gameInfo.imageUrl} alt={gameInfo.title} className="game-image" />
+                    <header className="glitch" data-text={gameInfo.title || ""}>{gameInfo.title}</header>
                     <p>${gameInfo.price ? gameInfo.price.toFixed(2) : "0.00"}</p>
-                    <button>
+                    <button className="neon-btn">
                         <Link to="edit">
                             Edit
                         </Link>
