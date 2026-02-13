@@ -26,6 +26,11 @@ export const ViewWishlist = () => {
                             <Link to={`/wishlists/${wishlistId}/game/${wishlistGame.game.id}`}
                             className="wishlist-game-card">
                             <img src={wishlistGame.game.imageUrl} alt={wishlistGame.game.title} />
+                            <h2 
+                                className="glitch" 
+                                data-text="{wishlistGame.game.title}"> 
+                                {wishlistGame.game.title}
+                            </h2>
                             <p className="game-price">${wishlistGame.game.price.toFixed(2)}</p>                         
                             </Link>
                         </div>
