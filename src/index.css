@@ -143,9 +143,10 @@ button:hover {
 .wishlist-game-card img,
 .random-game-card img {
   width: 100%;
-  min-height: 240px;
-  height: 250px;
-  object-fit: cover;
+  /* min-height: 240px; */
+  height: auto;
+  /* max-height: 300px; */
+  object-fit: contain;
   border-radius: 12px;
   margin-bottom: 1rem;
   box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
