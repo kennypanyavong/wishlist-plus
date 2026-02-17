@@ -19,11 +19,12 @@ export const ViewGame = () => {
                     <img src={gameInfo.imageUrl} alt={gameInfo.title} className="game-image" />
                     <header className="glitch" data-text={gameInfo.title || ""}>{gameInfo.title}</header>
                     <p>${gameInfo.price ? gameInfo.price.toFixed(2) : "0.00"}</p>
-                    <button className="neon-btn">
-                        <Link to="edit">
+                    {/* <button className="neon-btn"> */}
+                    
+                        <Link to="edit" className="neon-btn edit-btn">
                             Edit
                         </Link>
-                    </button>
+                    {/* </button> */}
                 </div>              
             </article>
         </div>

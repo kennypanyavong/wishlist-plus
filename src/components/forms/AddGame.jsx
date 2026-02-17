@@ -79,9 +79,11 @@ export const AddGame = () => {
             const updatedWishlistGames = await getWishlistGamesById(selectedWishlist)
                 setWishlistGames(updatedWishlistGames)
                 
+            // setSuccessMessage(`"${steamGame.name}" added to your wishlist!`)
+            // setTimeout(() => setSuccessMessage("", 3000))
             window.alert(`"${steamGame.name}" added to your wishlist!`)
-            setSteamResults([])
-            setSearchTerm("")
+            // setSteamResults([])
+            // setSearchTerm("")
     }
 
     const handleSave = () => {
@@ -155,7 +157,7 @@ export const AddGame = () => {
                         <div key={game.id} className="steam-game-card">
                             <img src={game.tiny_image} alt={game.name} />
                             <h4>{game.name}</h4>
-                            {game.price ? <p>${(game.price.final / 100).toFixed(2)}</p> : <p>Free / N/A</p>}
+                            {game.price ? <p>${(game.price.final / 100).toFixed(2)}</p> : <p>TBD</p>}
                             <button
                                 className="neon-btn"
                                 disabled={isAlreadyAdded(game)} 

@@ -109,7 +109,7 @@ input:focus, select:focus {
 ============================== */
 .steam-results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
     width: 100%;
     max-width: 900px;

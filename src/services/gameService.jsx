@@ -41,3 +41,7 @@ export const deleteGameFromWishlist = (wishlistGameId) => {
         }
     )
 }
+
+export const getAllWishlistGames = () => {
+    return fetch("http://localhost:8088/wishlistGames?_expand=game").then(res => res.json())
+}

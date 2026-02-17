@@ -10,6 +10,7 @@ import { CreateWishlist } from "../forms/CreateWishlist.jsx"
 import { AddGame } from "../forms/AddGame.jsx"
 import { EditWishlist } from "../forms/EditWishlist.jsx"
 import { EditGame } from "../forms/EditGame.jsx"
+import { GameWallBackground } from "../games/GameWallBackground.jsx"
 
 
 export const ApplicationViews = () => {
@@ -21,6 +22,7 @@ export const ApplicationViews = () => {
                 path="/" 
                 element={
                     <>
+                        <GameWallBackground/>
                         <NavBar/>
                         <Outlet/>
                     </>
