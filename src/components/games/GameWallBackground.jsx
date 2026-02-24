@@ -9,6 +9,7 @@ export const GameWallBackground = () => {
 
     useEffect(() => {
         getAllWishlistGames().then(data => {
+            console.log("wishlist data:", data)
             const unique = []
             const seen = new Set()
 
